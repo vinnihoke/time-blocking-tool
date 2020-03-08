@@ -17,7 +17,7 @@ const TableData = () => {
 					<option value="Not Completed">Not Completed</option>
 				</select>
 			</td>
-			<td>Test</td>
+			<td><h4>Test</h4></td>
 			<td>
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, vitae?
 		</td>

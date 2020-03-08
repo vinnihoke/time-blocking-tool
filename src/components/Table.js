@@ -6,12 +6,12 @@ const Table = ({ title, timeframe }) => {
 		<table className="ui small striped table">
 			<thead>
 				<tr>
-					<th colspan="3">
+					<th colSpan="3">
 						<h3>{title}</h3>
 					</th>
 				</tr>
 				<tr>
-					<th colspan="3">
+					<th colSpan="3">
 						<h4>{timeframe}</h4>
 					</th>
 				</tr>
