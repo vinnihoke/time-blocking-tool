@@ -16,10 +16,10 @@ function App() {
     setDarkmode(!darkmode)
     if (darkmode === true) {
       document.querySelector(".ui.segment").classList.add('inverted')
-      document.querySelectorAll(".ui.small.striped.table").classList.add('inverted')
+      document.querySelector(".ui.small.striped.table").classList.add('inverted')
     } else {
       document.querySelector(".ui.segment").classList.remove('inverted')
-      document.querySelectorAll(".ui.small.striped.table").classList.remove('inverted')
+      document.querySelector(".ui.small.striped.table").classList.remove('inverted')
     }
   }
 
