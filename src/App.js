@@ -31,7 +31,7 @@ function App() {
 
   return (
     <main className="ui container">
-      <div className="ui segment very padded">
+      <div className="ui segment">
         <h3>Timeblocking</h3>
         {
           darkmode === false ? <Icon name="moon" className="fab" onClick={toggleDarkmode} /> : <Icon name="sun" className="fab" onClick={toggleDarkmode} />

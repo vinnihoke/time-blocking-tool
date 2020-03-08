@@ -19,7 +19,7 @@ const TableData = () => {
 					</select>
 				</div>
 			</td>
-			<td><h4>Test</h4></td>
+			<td><h4>Testing testing</h4></td>
 			<td>
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, vitae?
 		</td>
