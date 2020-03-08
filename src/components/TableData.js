@@ -11,11 +11,13 @@ const TableData = () => {
 	return (
 		<tr>
 			<td>
-				<select name="task-status" value={status} className="ui dropdown" onChange={handleChange}>
-					<option value="Completed">Completed</option>
-					<option value="In Progress">In Progress</option>
-					<option value="Not Completed">Not Completed</option>
-				</select>
+				<div className="ui buttons black">
+					<select name="task-status" value={status} className="ui floating dropdown button" onChange={handleChange}>
+						<option value="Completed">Completed</option>
+						<option value="In Progress">In Progress</option>
+						<option value="Not Completed">Not Completed</option>
+					</select>
+				</div>
 			</td>
 			<td><h4>Test</h4></td>
 			<td>
