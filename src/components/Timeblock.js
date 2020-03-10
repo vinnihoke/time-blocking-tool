@@ -1,11 +1,26 @@
-import React from 'react'
-import TimeblockData from './TimeblockData'
+import React, { useState, useEffect } from 'react'
+import Tasks from './Tasks.js'
 import { Popup } from 'semantic-ui-react'
+import axios from 'axios';
 
 const Table = (props) => {
-
-	console.log("Props from timeblock", props)
 	const { id, title, start, end, description } = props
+
+	const [data, setData] = useState();
+
+	useEffect(() => {
+		let call = async () => {
+			try {
+				let request = await axios.get(`http://localhost:3200/tasks/${id}`)
+				setData(request.data)
+			} catch (e) {
+				console.log(e.message)
+			}
+		}
+		call()
+	}, [])
+
+	console.log(data)
 
 	return (
 		<table className="ui small striped table">
@@ -23,7 +38,10 @@ const Table = (props) => {
 				</tr>
 			</thead>
 			<tbody>
-				<TimeblockData />
+				{data ? data.map((task, index) => {
+					return <Tasks key={index} {...task} timeblock={id} />
+				}) : <h4>Loading</h4>}
+
 			</tbody>
 		</table>
 	)
