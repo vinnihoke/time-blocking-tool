@@ -1,7 +1,9 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import Table from './components/Table';
 import { Icon } from "semantic-ui-react"
+import TimeblockList from './views/TimeblockList.js';
+import Auth from './views/Auth.js'
+import { BrowserRouter as Router, Route, Switch, useParams } from 'react-router-dom';
 
 function App() {
 
@@ -30,17 +32,25 @@ function App() {
   }, [darkmode])
 
   return (
-    <main className="ui container">
-      <div className="ui segment">
-        <h3>Timeblocking</h3>
-        {
-          darkmode === false ? <Icon name="moon" className="fab" onClick={toggleDarkmode} /> : <Icon name="sun" className="fab" onClick={toggleDarkmode} />
-        }
-        <Table title="📚 Study" timeframe="8:00 - 11:00" darkmode={darkmode} />
-        <Table title="👩‍💻 Coding" timeframe="12:00 - 14:00" darkmode={darkmode} />
-        <Table title="🤝 Client" timeframe="14:15 - 17:30" darkmode={darkmode} />
-      </div>
-    </main>
+    <Router>
+      <main className="ui container">
+        <div className="ui segment">
+          <h3>Timeblocking</h3>
+          {
+            darkmode === false ? <Icon name="moon" className="fab" onClick={toggleDarkmode} /> : <Icon name="sun" className="fab" onClick={toggleDarkmode} />
+          }
+
+          <Switch>
+            <Route exact path={`/dashboard/auth/:token`}>
+              <Auth darkmode={darkmode} />
+            </Route>
+            <Route exact path={`/dashboard`}>
+              <TimeblockList darkmode={darkmode} />
+            </Route>
+          </Switch>
+        </div>
+      </main>
+    </Router>
   );
 }
 

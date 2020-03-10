@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const TableData = () => {
+const TimeblockData = () => {
 
 	const [status, setStatus] = useState('Not Completed')
 
@@ -11,7 +11,7 @@ const TableData = () => {
 	return (
 		<tr>
 			<td>
-				<div className="ui buttons black">
+				<div className="ui buttons">
 					<select name="task-status" value={status} className="ui floating dropdown button" onChange={handleChange}>
 						<option value="Completed">Completed</option>
 						<option value="In Progress">In Progress</option>
@@ -19,12 +19,14 @@ const TableData = () => {
 					</select>
 				</div>
 			</td>
-			<td><h4>Testing testing</h4></td>
+			<td>
+				<h4>Testing testing</h4>
+			</td>
 			<td>
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, vitae?
-		</td>
+			</td>
 		</tr>
 	)
 }
 
-export default TableData
+export default TimeblockData
