@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Tasks from './Tasks.js'
 import { Popup } from 'semantic-ui-react'
 import axios from 'axios';
+import dayjs from 'dayjs';
+
 
 const Table = (props) => {
 	const { id, title, start, end, description } = props
@@ -33,7 +35,7 @@ const Table = (props) => {
 				<tr>
 					<th colSpan="3">
 						{/* TODO Needs conversion to time */}
-						<h4>{`${start} - ${end}`}</h4>
+						<h4>{`${dayjs(start).format("HH:mm")} - ${dayjs(end).format("HH:mm")}`}</h4>
 					</th>
 				</tr>
 			</thead>

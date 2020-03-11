@@ -19,12 +19,14 @@ const TimeblockList = (darkmode) => {
 	}, [])
 
 	return (
-		<div>
-			{data ? data.map((element, index) => {
-				return <Timeblock key={index} {...element} darkmode={darkmode} />
-			}) : <h4>Loading</h4>
-			}
-		</div>
+		<>
+			<div>
+				{data ? data.map((element, index) => {
+					return <Timeblock key={index} {...element} darkmode={darkmode} />
+				}) : <h4>Loading</h4>
+				}
+			</div>
+		</>
 	)
 }
 
