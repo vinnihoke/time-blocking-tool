@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 const TimeblockData = (props) => {
-
-	console.log('Props of tasks', props)
 	const { title, description, status } = props
 	const [progress, setProgress] = useState(status)
 

@@ -22,7 +22,6 @@ const Table = (props) => {
 		call()
 	}, [])
 
-	console.log(data)
 
 	return (
 		<table className="ui small striped table">
@@ -42,7 +41,7 @@ const Table = (props) => {
 			<tbody>
 				{data ? data.map((task, index) => {
 					return <Tasks key={index} {...task} timeblock={id} />
-				}) : <h4>Loading</h4>}
+				}) : <tr><td><h4>Loading</h4></td></tr>}
 
 			</tbody>
 		</table>

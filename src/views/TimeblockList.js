@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Timeblock from '../components/Timeblock.js'
+import Timeblock from '../components/layout/Timeblock.js'
+import TimeblockForm from '../components/utils/TimeblockForm.js'
+import { Icon, Sidebar, Segment, Menu } from "semantic-ui-react"
 import axios from 'axios';
 
-const TimeblockList = (darkmode) => {
+const TimeblockList = () => {
 
+	const [sidebar, setSidebar] = useState(false)
 	const [data, setData] = useState();
 
 	useEffect(() => {
@@ -19,14 +22,39 @@ const TimeblockList = (darkmode) => {
 	}, [])
 
 	return (
-		<>
-			<div>
-				{data ? data.map((element, index) => {
-					return <Timeblock key={index} {...element} darkmode={darkmode} />
-				}) : <h4>Loading</h4>
-				}
-			</div>
-		</>
+		<Sidebar.Pushable>
+			<Sidebar as={Menu}
+				animation='push'
+				icon='labeled'
+				direction="right"
+				onHide={() => setSidebar(false)}
+				vertical
+				visible={sidebar}
+				width='very wide'
+			>
+				<div style={{ width: "70%", margin: "0 auto" }}>
+					<TimeblockForm />
+				</div>
+			</Sidebar>
+			<Sidebar.Pusher>
+				<section>
+					{data ? data.map((element, index) => {
+						return <Timeblock key={index} {...element} />
+					}) : <h4>Loading</h4>
+					}
+				</section>
+				<section className="ui grid">
+					<div className="right floated column">
+						<div className="ui animated blue button right floated" tabIndex="0" onClick={() => setSidebar(!sidebar)}>
+							<div className="visible content">Add new timeblock</div>
+							<div className="hidden content">
+								<i className="right  plus icon"></i>
+							</div>
+						</div>
+					</div>
+				</section>
+			</Sidebar.Pusher>
+		</Sidebar.Pushable>
 	)
 }
 
