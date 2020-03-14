@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Tasks from './Tasks.js'
 import { Popup } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import dayjs from 'dayjs';
 
@@ -44,6 +45,9 @@ const Table = (props) => {
 				}) : <tr><td><h4>Loading</h4></td></tr>}
 
 			</tbody>
+			<Link to={`/dashboard/${id}/`}>
+				<button className="ui button primary">+</button>
+			</Link>
 		</table>
 	)
 }

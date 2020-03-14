@@ -5,6 +5,8 @@ import Auth from './views/Auth.js'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useLocalStorage } from './hooks/useLocalStorage.js'
 import TimeblockForm from './components/utils/TimeblockForm.js';
+import { GlobalProvider } from './context/globalContext.js';
+import Landing from './views/Landing.js';
 
 function App() {
 
@@ -43,22 +45,26 @@ function App() {
 
   return (
     <Router>
-      <main className="ui container">
-        <h3>Timeblocking</h3>
-        {/* {
+      <GlobalProvider>
+        <main className="ui container">
+          <h3>Timeblocking</h3>
+          {/* {
                 darkmode === false ? <Icon name="moon" className="fab" onClick={toggleDarkmode} /> : <Icon name="sun" className="fab" onClick={toggleDarkmode} />
               } */}
 
-        <Switch>
-          <Route exact path="/dashboard/auth/:token">
-            <Auth />
-          </Route>
-          <Route exact path="/dashboard/:userid">
-            <TimeblockList />
-          </Route>
-        </Switch>
-      </main>
-
+          <Switch>
+            <Route exact path="/welcome">
+              <Landing />
+            </Route>
+            <Route exact path="/dashboard/auth/:token">
+              <Auth />
+            </Route>
+            <Route exact path="/dashboard/:userid">
+              <TimeblockList />
+            </Route>
+          </Switch>
+        </main>
+      </GlobalProvider>
     </Router >
   );
 }
