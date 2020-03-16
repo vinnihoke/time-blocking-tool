@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import TimeblockList from './views/TimeblockList.js';
 import Auth from './views/Auth.js'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { useLocalStorage } from './hooks/useLocalStorage.js'
+import { useLocalStorage } from './helpers/useLocalStorage.js'
 import TimeblockForm from './components/utils/TimeblockForm.js';
 import { GlobalProvider } from './context/globalContext.js';
 import Landing from './views/Landing.js';
@@ -56,7 +56,7 @@ function App() {
             <Route exact path="/welcome">
               <Landing />
             </Route>
-            <Route exact path="/dashboard/auth/:token">
+            <Route exact path="/auth/:token">
               <Auth />
             </Route>
             <Route exact path="/dashboard/:userid">

@@ -1,30 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import { useLocalStorage } from '../hooks/useLocalStorage.js'
+import { useLocalStorage } from '../helpers/useLocalStorage.js'
 import { setUser, useGlobalContext } from '../context/globalContext.js'
 import axios from 'axios'
+import { axiosWithAuth } from '../helpers/axiosWithAuth.js'
 
 const Auth = () => {
 
 	let history = useHistory()
 	const { token } = useParams()
-	let check = window.localStorage.getItem('token')
-	if (check) {
-		// TODO I think these both will need an axios call to login. Or validate the token.
-		// TODO Restricted middleware is not functioning properly.
-		window.localStorage.setItem('token', token)
-		// history.push("/dashboard/1")
-		console.log(typeof token)
-		axios.post("http://localhost:3200/auth/login", token).then(res => console.log(res)).catch(err => console.log(err))
+	const [validation, setValidation] = useLocalStorage("token", 'test');
+
+	if (window.localStorage.getItem('token')) {
+		axiosWithAuth().post("http://localhost:3200/auth/login")
+			.then(res => setValidation(res.data))
+			.catch(err => console.log(err))
 	} else {
-		// history.push("/dashboard/1")
+		setValidation(token)
+		axiosWithAuth().post("http://localhost:3200/auth/login")
+			.then(res => setValidation(res.data))
+			.catch(err => console.log(err))
 	}
+
+
+	// axios.post("http://localhost:3200/auth/login", {
+	// 	headers: {
+	// 		Authorization: token
+	// 	}
+	// })
+	// 	.then(res => setValidation(res.data))
+	// 	.catch(err => console.log(err))
+
+	console.log(validation)
 
 
 
 
 	return (
-		<div className="ui active centered inline loader"></div>
+		<div>
+			<div className="ui active centered inline loader"></div>
+		</div>
 	)
 }
 
