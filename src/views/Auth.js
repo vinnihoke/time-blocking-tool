@@ -1,40 +1,41 @@
-import React, { useState } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+// @ts-check
+
+import React, { useState, useEffect } from 'react'
+import { useParams, useHistory, Router } from 'react-router-dom'
 import { useLocalStorage } from '../helpers/useLocalStorage.js'
 import { setUser, useGlobalContext } from '../context/globalContext.js'
-import axios from 'axios'
 import { axiosWithAuth } from '../helpers/axiosWithAuth.js'
+
 
 const Auth = () => {
 
 	let history = useHistory()
 	const { token } = useParams()
-	const [validation, setValidation] = useLocalStorage("token", 'test');
-
-	if (window.localStorage.getItem('token')) {
-		axiosWithAuth().post("http://localhost:3200/auth/login")
-			.then(res => setValidation(res.data))
-			.catch(err => console.log(err))
-	} else {
-		setValidation(token)
-		axiosWithAuth().post("http://localhost:3200/auth/login")
-			.then(res => setValidation(res.data))
-			.catch(err => console.log(err))
+	const { context, dispatch } = useGlobalContext()
+	const localToken = window.localStorage.getItem("token")
+	if (!localToken) {
+		window.localStorage.setItem("token", JSON.stringify(token))
 	}
 
+	useEffect(() => {
+		const call = async () => {
+			try {
+				let login = await axiosWithAuth().post("http://localhost:3200/auth/login")
+				// await dispatch(setUser(login.data.request))
+				await dispatch(setUser(login.data.request))
+				if (login) {
+					history.push(`/dashboard/${login.data.request.id}`)
+				} else {
+					history.push(`/welcome`)
+				}
+			} catch (e) {
+				console.log(e.message)
+			}
+		}
+		call()
 
-	// axios.post("http://localhost:3200/auth/login", {
-	// 	headers: {
-	// 		Authorization: token
-	// 	}
-	// })
-	// 	.then(res => setValidation(res.data))
-	// 	.catch(err => console.log(err))
 
-	console.log(validation)
-
-
-
+	}, [dispatch])
 
 	return (
 		<div>

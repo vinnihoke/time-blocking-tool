@@ -32,16 +32,17 @@ const initialState = {
 export const SET_USER = "SET_USER"
 
 // Action Creators
-export const setUser = user => {
-	return { type: SET_USER, user }
+export const setUser = ({ id, username, email }) => {
+	return { type: SET_USER, id, username, email }
 }
 
 export const GlobalReducer = (state, action) => {
 	switch (action.type) {
 		case SET_USER:
-			return { ...state, user: { id: null, username: '', email: '' } };
+			console.log("Set user is firing")
+			return { ...state, user: { id: action.id, username: action.username, email: action.email } };
 		default:
-			throw new Error()
+			return state
 	}
 }
 
