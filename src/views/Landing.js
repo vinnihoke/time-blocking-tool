@@ -1,10 +1,9 @@
 import React from 'react'
 import axios from 'axios';
+import { Authorization } from '../helpers/Authorization';
 
 const Landing = () => {
-
-	// // TODO non operational. Waiting for Google URI to update.
-
+	Authorization()
 	return (
 		<div>
 			<a href={`${process.env.REACT_APP_BASE_URL}/connect/google`}>

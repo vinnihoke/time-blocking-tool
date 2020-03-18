@@ -8,7 +8,7 @@ import { Button, Checkbox, Form } from 'semantic-ui-react'
 const TimeblockForm = (props) => {
 
 	const { userid } = useParams()
-	const { setData } = props
+	// const { setData } = props
 
 	const formik = useFormik({
 		initialValues: {
@@ -22,7 +22,7 @@ const TimeblockForm = (props) => {
 		onSubmit: async data => {
 			try {
 				const timeblocks = await axios.post(`${process.env.REACT_APP_BASE_URL}/timeblocks/${userid}`, data)
-				setData(timeblocks.data)
+				// setData(timeblocks.data)
 			} catch (e) {
 				console.log(e.message)
 			}

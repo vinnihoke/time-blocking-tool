@@ -7,8 +7,10 @@ import { useLocalStorage } from './helpers/useLocalStorage.js'
 import TimeblockForm from './components/utils/TimeblockForm.js';
 import { GlobalProvider } from './context/globalContext.js';
 import Landing from './views/Landing.js';
+import PrivateRoute from './helpers/PrivateRoute.js';
 
-function App() {
+class App extends React.Component {
+  // function App() {
 
   // const [darkmode, setDarkmode] = useLocalStorage('darkmode', "false")
 
@@ -43,30 +45,34 @@ function App() {
   //   }
   // }, [darkmode])
 
-  return (
-    <Router>
-      <GlobalProvider>
-        <main className="ui container">
-          <h3>Timeblocking</h3>
-          {/* {
-                darkmode === false ? <Icon name="moon" className="fab" onClick={toggleDarkmode} /> : <Icon name="sun" className="fab" onClick={toggleDarkmode} />
-              } */}
 
-          <Switch>
-            <Route exact path="/welcome">
-              <Landing />
-            </Route>
-            <Route exact path="/auth/:token">
-              <Auth />
-            </Route>
-            <Route exact path="/dashboard/:userid">
-              <TimeblockList />
-            </Route>
-          </Switch>
-        </main>
-      </GlobalProvider>
-    </Router >
-  );
+  render() {
+
+    return (
+      <Router>
+        <GlobalProvider>
+          <main id="Entry">
+            {/* {
+                  darkmode === false ? <Icon name="moon" className="fab" onClick={toggleDarkmode} /> : <Icon name="sun" className="fab" onClick={toggleDarkmode} />
+                } */}
+
+            <Switch>
+              <Route exact path="/">
+                <Landing />
+              </Route>
+              <Route exact path="/auth/:token">
+                <Auth />
+              </Route>
+              {/* <PrivateRoute exact path="/dashboard/:userid">
+                <TimeblockList />
+                </PrivateRoute> */}
+              <PrivateRoute path="/dashboard/:userid" component={TimeblockList} />
+            </Switch>
+          </main>
+        </GlobalProvider>
+      </Router >
+    );
+  }
 }
 
 export default App;

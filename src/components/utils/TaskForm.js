@@ -5,15 +5,16 @@ import * as Yup from 'yup'
 import axios from 'axios';
 import { Button, Checkbox, Form } from 'semantic-ui-react'
 
-const TimeblockForm = (props) => {
+const TaskForm = (props) => {
 
 	const { userid } = useParams()
-	const { setData } = props
+	const { id, setData } = props
 
 	const formik = useFormik({
 		initialValues: {
 			title: "",
 			description: "",
+			status: "Not Completed"
 		},
 		validationSchema: Yup.object({
 			title: Yup.string().required("Required"),
@@ -21,7 +22,7 @@ const TimeblockForm = (props) => {
 		}),
 		onSubmit: async data => {
 			try {
-				const timeblocks = await axios.post(`${process.env.REACT_APP_BASE_URL}/timeblocks/${userid}`, data)
+				const timeblocks = await axios.post(`${process.env.REACT_APP_BASE_URL}/tasks/${id}`, data)
 				setData(timeblocks.data)
 			} catch (e) {
 				console.log(e.message)
@@ -45,9 +46,9 @@ const TimeblockForm = (props) => {
 					<div className="has-text-danger">{formik.errors.description}</div>
 				) : null}
 			</Form.Field>
-			<Button type='submit'>Add New Timeblock</Button>
+			<Button type='submit'>Add Task</Button>
 		</Form>
 	)
 }
 
-export default TimeblockForm
+export default TaskForm

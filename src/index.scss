@@ -1,3 +1,7 @@
+.pushable {
+	min-height: 100vh;
+}
+
 .darkmodeBG {
 	background-color: #1b1c1d;
 }
@@ -8,7 +12,12 @@
 	right: 15px;
 }
 
-#root {
-	height: 100%;
+.hiddenForm {
+	display: none;
+	transition: 1s;
 }
+
+// #root {
+// 	height: 100%;
+// }
 
