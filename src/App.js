@@ -7,11 +7,12 @@ import PrivateRoute from './helpers/PrivateRoute.js';
 import configRedux from './configRedux.js';
 import { Provider } from 'react-redux';
 import Navbar from './components/layout/Navbar.js';
+import Authorization from './helpers/Authorization.js';
 
 const store = configRedux()
 
-class App extends React.Component {
-  // function App() {
+
+function App() {
 
   // const [darkmode, setDarkmode] = useLocalStorage('darkmode', "false")
 
@@ -47,34 +48,31 @@ class App extends React.Component {
   // }, [darkmode])
 
 
-  render() {
-
-    return (
-      <Router>
-        <Provider store={store}>
-          <main id="Entry">
-            <Navbar />
-            {/* {
+  return (
+    <Router>
+      <Provider store={store}>
+        <main id="Entry">
+          <Navbar />
+          {/* {
                   darkmode === false ? <Icon name="moon" className="fab" onClick={toggleDarkmode} /> : <Icon name="sun" className="fab" onClick={toggleDarkmode} />
                 } */}
 
-            <Switch>
-              <Route exact path="/">
-                <Landing />
-              </Route>
-              <Route exact path="/auth/:token">
-                <Auth />
-              </Route>
-              {/* <PrivateRoute exact path="/dashboard/:userid">
+          <Switch>
+            <Route exact path="/">
+              <Landing />
+            </Route>
+            <Route exact path="/auth/:token">
+              <Auth />
+            </Route>
+            {/* <PrivateRoute exact path="/dashboard/:userid">
                 <TimeblockList />
                 </PrivateRoute> */}
-              <PrivateRoute path="/dashboard/:userid" component={TimeblockList} />
-            </Switch>
-          </main>
-        </Provider>
-      </Router >
-    );
-  }
+            <PrivateRoute path="/dashboard/:userid" component={TimeblockList} />
+          </Switch>
+        </main>
+      </Provider>
+    </Router >
+  );
 }
 
 export default App;

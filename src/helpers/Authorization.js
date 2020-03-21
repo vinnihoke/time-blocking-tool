@@ -1,9 +1,11 @@
 import { useHistory } from 'react-router-dom'
 
-export const Authorization = () => {
+const Authorization = () => {
 	let history = useHistory()
 	const existingToken = window.localStorage.getItem('token')
 	if (existingToken) {
 		history.push(`/auth/${existingToken}`)
 	}
 }
+
+export default Authorization
