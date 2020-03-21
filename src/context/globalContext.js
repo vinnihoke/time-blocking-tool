@@ -1,44 +1,56 @@
-import React, { createContext, useReducer, useContext } from 'react';
+// // @ts-check
 
-export const GlobalContext = createContext();
+// import React, { createContext, useReducer, useContext } from 'react';
+// import { AxiosWithAuth } from '../helpers/AxiosWithAuth.js'
 
-const initialState = {
-	user: {},
-	timeblocks: [],
-}
+// export const GlobalContext = createContext();
 
-// Action
-export const SET_USER = "SET_USER"
-export const SET_TIMEBLOCKS = "SET_TIMEBLOCKS"
-export const SET_TASKS = "SET_TASKS"
+// const initialState = {
+// 	user: {},
+// 	timeblocks: [],
+// 	tasks: []
+// }
 
-// Action Creators
-export const setUser = ({ id, username, email }) => {
-	return { type: SET_USER, id, username, email }
-}
-export const setTimeblocks = (timeblocks) => {
-	return { type: SET_TIMEBLOCKS, timeblocks }
-}
+// // Action
+// export const SET_USER = "SET_USER"
+// export const SET_TIMEBLOCKS = "SET_TIMEBLOCKS"
+// export const SET_TASKS = "SET_TASKS"
 
-export const GlobalReducer = (state, action) => {
-	switch (action.type) {
-		case SET_USER:
-			return { ...state, user: { id: action.id, username: action.username, email: action.email } };
-		case SET_TIMEBLOCKS:
-			return { ...state, timeblocks: [...state.timeblocks, ...action.timeblocks] };
-		default:
-			return state
-	}
-}
+// // Action Creators
+// export const setUser = ({ id, username, email }) => {
+// 	return { type: SET_USER, id, username, email }
+// }
+// export const setTimeblocks = (userid) => {
+// 	AxiosWithAuth().get(`http://localhost:3200/timeblocks/${userid}`)
+// 		.then(res => console.log(res))
+// 		.catch(err => console.log(err))
+// 	// return 
+// }
+// export const setTasks = (tasks) => {
+// 	return { type: SET_TASKS, tasks }
+// }
 
-const GlobalProvider = props => {
-	const [context, dispatch] = useReducer(GlobalReducer, initialState);
-	const globalData = { context, dispatch };
-	return <GlobalContext.Provider value={globalData} {...props} />;
-};
+// export const GlobalReducer = (state, action) => {
+// 	switch (action.type) {
+// 		case SET_USER:
+// 			return { ...state, user: { id: action.id, username: action.username, email: action.email } };
+// 		case SET_TIMEBLOCKS:
+// 			return { ...state, timeblocks: [...state.timeblocks, action.timeblocks] };
+// 		case SET_TASKS:
+// 			return { ...state, tasks: [...state.tasks, ...action.tasks] };
+// 		default:
+// 			return state
+// 	}
+// }
 
-const useGlobalContext = () => {
-	return useContext(GlobalContext);
-}
+// const GlobalProvider = props => {
+// 	const [context, dispatch] = useReducer(GlobalReducer, initialState);
+// 	const globalData = { context, dispatch };
+// 	return <GlobalContext.Provider value={globalData} {...props} />;
+// };
 
-export { GlobalProvider, useGlobalContext };
+// const useGlobalContext = () => {
+// 	return useContext(GlobalContext);
+// }
+
+// export { GlobalProvider, useGlobalContext };

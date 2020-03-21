@@ -1,13 +1,14 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
 import TimeblockList from './views/TimeblockList.js';
 import Auth from './views/Auth.js'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { useLocalStorage } from './helpers/useLocalStorage.js'
-import TimeblockForm from './components/utils/TimeblockForm.js';
-import { GlobalProvider } from './context/globalContext.js';
 import Landing from './views/Landing.js';
 import PrivateRoute from './helpers/PrivateRoute.js';
+import configRedux from './configRedux.js';
+import { Provider } from 'react-redux';
+import Navbar from './components/layout/Navbar.js';
+
+const store = configRedux()
 
 class App extends React.Component {
   // function App() {
@@ -50,8 +51,9 @@ class App extends React.Component {
 
     return (
       <Router>
-        <GlobalProvider>
+        <Provider store={store}>
           <main id="Entry">
+            <Navbar />
             {/* {
                   darkmode === false ? <Icon name="moon" className="fab" onClick={toggleDarkmode} /> : <Icon name="sun" className="fab" onClick={toggleDarkmode} />
                 } */}
@@ -69,7 +71,7 @@ class App extends React.Component {
               <PrivateRoute path="/dashboard/:userid" component={TimeblockList} />
             </Switch>
           </main>
-        </GlobalProvider>
+        </Provider>
       </Router >
     );
   }

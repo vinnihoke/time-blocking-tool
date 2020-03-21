@@ -2,15 +2,18 @@
 
 import React, { useEffect } from 'react'
 import { useParams, useHistory, Router } from 'react-router-dom'
-import { setUser, useGlobalContext } from '../context/globalContext.js'
 import { AxiosWithAuth } from '../helpers/AxiosWithAuth.js'
+import { useDispatch } from "react-redux";
+import actions from "../actions/index.js";
+
 
 
 const Auth = () => {
 
 	let history = useHistory()
 	const { token } = useParams()
-	const { dispatch } = useGlobalContext()
+	const dispatch = useDispatch();
+
 	const localToken = window.localStorage.getItem("token")
 	if (!localToken) {
 		window.localStorage.setItem("token", JSON.stringify(token))
@@ -20,7 +23,8 @@ const Auth = () => {
 		const call = async () => {
 			try {
 				let login = await AxiosWithAuth().post("http://localhost:3200/auth/login")
-				await dispatch(setUser(login.data.request))
+				dispatch(actions.indexActions.setUser(login.data.request))
+				console.log(login)
 				if (login) {
 					history.push(`/dashboard/${login.data.request.id}`)
 				} else {
@@ -31,8 +35,6 @@ const Auth = () => {
 			}
 		}
 		call()
-
-
 	}, [dispatch])
 
 	return (

@@ -1,3 +1,58 @@
+#Navbar {
+	height: 80px;
+	width: 100%;
+	background: dodgerblue;
+	color: white;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+#Landing {
+	height: 90vh;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: center;
+
+	.landing-column {
+		width: calc(99%/2);
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: center;
+
+		.landing-card {
+			padding: 25px;
+			width: 350px;
+			height: 400px;
+			border-radius: 10px;
+			box-shadow: 1px 1px 10px  rgb(231, 231, 231);
+			display: flex;
+			flex-flow: column;
+			align-items: center;
+			justify-content: center;
+
+			@media (max-width: 1000px){
+				width: 350px;
+				height: 200px;
+				flex-flow: column;
+				align-items: center;
+				justify-content: space-evenly;
+			}
+		}
+
+	}
+	@media (max-width: 1000px){
+		flex-flow: column;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+
+
+}
+
 .pushable {
 	min-height: 100vh;
 }
@@ -16,8 +71,4 @@
 	display: none;
 	transition: 1s;
 }
-
-// #root {
-// 	height: 100%;
-// }
 
