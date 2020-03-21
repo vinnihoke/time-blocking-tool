@@ -1,8 +1,7 @@
 import React from 'react'
-import { Authorization } from '../helpers/Authorization';
 
 const Landing = () => {
-	Authorization()
+
 	return (
 		<section id="Landing" className="ui container">
 			<aside className="landing-column">
