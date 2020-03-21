@@ -1,5 +1,3 @@
-// @ts-check
-
 import React, { useEffect } from 'react'
 import { useParams, useHistory, Router } from 'react-router-dom'
 import AxiosWithAuth from '../helpers/AxiosWithAuth.js'
@@ -22,7 +20,7 @@ const Auth = () => {
 	useEffect(() => {
 		const call = async () => {
 			try {
-				let login = await AxiosWithAuth().post("http://localhost:3200/auth/login")
+				let login = await AxiosWithAuth().post("/auth/login")
 				dispatch(actions.indexActions.setUser(login.data.request))
 				console.log(login)
 				if (login) {
