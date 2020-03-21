@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios';
 import { Authorization } from '../helpers/Authorization';
 
 const Landing = () => {
