@@ -28,3 +28,4 @@ yarn-error.log*
 .env.build
 
 pnpm-lock.yaml
+.now

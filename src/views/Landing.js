@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react'
-import axios from 'axios';
-import { Authorization } from '../helpers/Authorization';
+import React from 'react'
 
 const Landing = () => {
 
