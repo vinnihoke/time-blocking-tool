@@ -7,9 +7,20 @@ import PrivateRoute from './helpers/PrivateRoute.js';
 import configRedux from './configRedux.js';
 import { Provider } from 'react-redux';
 import Navbar from './components/layout/Navbar.js';
-import Authorization from './helpers/Authorization.js';
+
+
+const saveLocal = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    window.localStorage.setItem('state', serializedState)
+  } catch (e) {
+    console.log(e.message)
+  }
+}
 
 const store = configRedux()
+
+store.subscribe(() => saveLocal(store.getState()))
 
 
 function App() {
