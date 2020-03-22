@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useParams, useHistory, Router } from 'react-router-dom'
-import AxiosWithAuth from '../helpers/AxiosWithAuth.js'
+import AxiosWithAuth from '../helpers/axiosWithAuth.js'
 import { useDispatch } from "react-redux";
 import actions from "../actions/index.js";
 
