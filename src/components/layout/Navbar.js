@@ -7,6 +7,7 @@ const Navbar = () => {
 
 	const handleLogout = () => {
 		window.localStorage.removeItem("token")
+		window.localStorage.removeItem("state")
 		history.push('/')
 	}
 
