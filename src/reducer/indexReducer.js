@@ -9,14 +9,14 @@ const indexReducer = (state = initialState, action) => {
 		case "SET_USER":
 			return { ...state, user: action.payload };
 		case "SET_TIMEBLOCKS":
-			return { ...state, timeblocks: [...state.timeblocks, ...action.payload] };
+			return { ...state, timeblocks: action.payload };
 		case "ADD_TIMEBLOCK":
 			return { ...state, timeblocks: [...state.timeblocks, action.payload] };
 		case "REMOVE_TIMEBLOCK":
 			return { ...state, timeblocks: state.timeblocks.filter(timeblock => timeblock.id !== action.payload.id) };
 
 		case "SET_TASKS":
-			return { ...state, tasks: [...state.tasks, ...action.payload] };
+			return { ...state, tasks: action.payload };
 		case "ADD_TASK":
 			return { ...state, tasks: [...state.tasks, action.payload] };
 		case "REMOVE_TASK":
