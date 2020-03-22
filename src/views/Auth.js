@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useParams, useHistory, Router } from 'react-router-dom'
-import AxiosWithAuth from '../helpers/axiosWithAuth.js'
+import axiosWithAuth from '../helpers/axiosWithAuth.js'
 import { useDispatch } from "react-redux";
 import actions from "../actions/index.js";
 
@@ -20,7 +20,7 @@ const Auth = () => {
 	useEffect(() => {
 		const call = async () => {
 			try {
-				let login = await AxiosWithAuth().post("/auth/login")
+				let login = await axiosWithAuth().post("/auth/login")
 				dispatch(actions.indexActions.setUser(login.data.request))
 				console.log(login)
 				if (login) {

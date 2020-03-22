@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-const AxiosWithAuth = () => {
+const axiosWithAuth = () => {
 	const token = localStorage.getItem("token");
 
 	return axios.create({
+		baseURL: process.env.REACT_APP_BASE_URL,
 		headers: {
-			baseURL: process.env.REACT_APP_BASE_URL,
 			Authorization: JSON.parse(token),
 		},
 	});
 };
 
-export default AxiosWithAuth
+export default axiosWithAuth
