@@ -17,8 +17,8 @@ const loadLocal = () => {
 const persistedState = loadLocal()
 
 const configRedux = () => createStore(
-	rootReducer,
 	persistedState,
+	rootReducer,
 	compose(
 		applyMiddleware(thunk, logger)
 	)
