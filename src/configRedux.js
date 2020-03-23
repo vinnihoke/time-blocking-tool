@@ -22,6 +22,4 @@ const configRedux = () => createStore(
 	applyMiddleware(thunk, logger)
 );
 
-
-
 export default configRedux;
