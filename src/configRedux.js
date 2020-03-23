@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducer/index.js';
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
@@ -19,7 +19,9 @@ const persistedState = loadLocal()
 const configRedux = () => createStore(
 	rootReducer,
 	persistedState,
-	applyMiddleware(thunk, logger)
+	compose(
+		applyMiddleware(thunk, logger)
+	)
 );
 
 
