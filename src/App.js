@@ -11,8 +11,7 @@ import Navbar from './components/layout/Navbar.js';
 
 const saveLocal = (state) => {
   try {
-    console.log(state)
-    const serializedState = JSON.stringify(state);
+    const serializedState = JSON.stringify(state.indexReducer.user);
     window.localStorage.setItem('state', serializedState)
   } catch (e) {
     console.log(e.message)
