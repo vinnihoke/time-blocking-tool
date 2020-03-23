@@ -12,19 +12,15 @@ const Task = (props) => {
 
 	const handleChange = (e) => {
 		setTask({ ...task, [e.target.name]: e.target.value })
+		dispatch(actions.indexActions.modifyTask(task.timeblock_id, task.id, task))
 	}
 
 	const handleRemove = () => {
 		dispatch(actions.indexActions.removeTask(store.user.id, id))
 	}
 
-	useEffect(() => {
-		dispatch(actions.indexActions.modifyTask(task.timeblock_id, task.id, task))
-	}, [handleChange])
-
-	useEffect(() => {
-
-	}, [handleRemove])
+	// useEffect(() => {
+	// }, [handleChange])
 
 	return (
 		<tr>

@@ -19,11 +19,8 @@ const Timeblock = (props) => {
 
 	useEffect(() => {
 		dispatch(actions.indexActions.setTasks(id))
-	}, [dispatch])
+	}, [store.timeblocks, dispatch])
 
-	useEffect(() => {
-
-	}, [handleRemove])
 
 
 	return (
