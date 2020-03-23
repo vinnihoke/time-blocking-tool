@@ -6,7 +6,7 @@ const Landing = () => {
 		<section id="Landing" className="ui container">
 			<aside className="landing-column">
 				<h1>Welcome to Time Blocking</h1>
-				<p>Delegate specific widows of time for deep work.</p>
+				<p>Delegate specific windows of time for deep work.</p>
 			</aside>
 			<aside className="landing-column">
 				<div className="landing-card">
