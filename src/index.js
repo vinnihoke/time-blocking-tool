@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'semantic-ui-css/semantic.min.css'
+
+// Imported UI Library CSS 
+import 'antd/lib/drawer/style/index.css';
+import 'antd/lib/grid/style/index.css'
 import "react-datepicker/dist/react-datepicker.css";
+import 'semantic-ui-css/semantic.min.css'
+
 import './index.scss';
 
 import App from './App';
