@@ -22,10 +22,6 @@ const Task = (props) => {
 		dispatch(actions.indexActions.modifyTask(task.timeblock_id, task.id, task))
 	}, [handleChange])
 
-	useEffect(() => {
-
-	}, [handleRemove])
-
 	return (
 		<tr>
 			<td>

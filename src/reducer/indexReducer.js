@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 const initialState = {
 	user: {},
 	timeblocks: [],
@@ -9,14 +11,14 @@ const indexReducer = (state = initialState, action) => {
 		case "SET_USER":
 			return { ...state, user: action.payload };
 		case "SET_TIMEBLOCKS":
-			return { ...state, timeblocks: action.payload };
+			return { ...state, timeblocks: _.uniqBy([...state.timeblocks, ...action.payload], "id") };
 		case "ADD_TIMEBLOCK":
 			return { ...state, timeblocks: [...state.timeblocks, action.payload] };
 		case "REMOVE_TIMEBLOCK":
 			return { ...state, timeblocks: state.timeblocks.filter(timeblock => timeblock.id !== action.payload.id) };
 
 		case "SET_TASKS":
-			return { ...state, tasks: action.payload };
+			return { ...state, tasks: _.uniqBy([...state.tasks, ...action.payload], "id") };
 		case "ADD_TASK":
 			return { ...state, tasks: [...state.tasks, action.payload] };
 		case "REMOVE_TASK":

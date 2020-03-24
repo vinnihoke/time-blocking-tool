@@ -14,6 +14,7 @@ const setTimeblocks = (userid) => dispatch => {
 const addTimeblock = (userid, timeblock) => dispatch => {
 	axiosWithAuth().post(`/timeblocks/${userid}`, timeblock)
 		.then(res => dispatch({ type: "ADD_TIMEBLOCK", payload: res.data }))
+		// .then(res => console.log(res.data))
 		.catch(err => console.log(err))
 }
 const modifyTimeblock = (userid, changes) => dispatch => {

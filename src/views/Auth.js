@@ -14,7 +14,7 @@ const Auth = () => {
 
 	const localToken = window.localStorage.getItem("token")
 	if (!localToken) {
-		window.localStorage.setItem("token", JSON.stringify(token))
+		window.localStorage.setItem("token", token)
 	}
 
 	useEffect(() => {
@@ -33,7 +33,7 @@ const Auth = () => {
 			}
 		}
 		call()
-	}, [dispatch])
+	}, [])
 
 	return (
 		<div>
