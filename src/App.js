@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import Navbar from './components/layout/Navbar.js';
 
 
+
 const saveLocal = (state) => {
   try {
     const serializedState = JSON.stringify(state);

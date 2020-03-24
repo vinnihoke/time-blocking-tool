@@ -40,7 +40,7 @@ const TimeblockForm = () => {
 	console.log("This is the window", window)
 
 	return (
-		<Form style={{ padding: "40px", margin: "40px 0px", background: "whitesmoke" }} onSubmit={formik.handleSubmit}>
+		<Form onSubmit={formik.handleSubmit}>
 			<Form.Field>
 				<label htmlFor="title">Title</label>
 				<input name='title' {...formik.getFieldProps('title')} />
