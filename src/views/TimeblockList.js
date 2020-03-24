@@ -48,8 +48,8 @@ const TimeblockList = () => {
 					<p>Didn't finish your day's tasks? Don't sweat it... pick them up the next day and move on to the next time block.</p>
 					<TimeblockForm />
 				</Drawer>
-				<button style={{ position: "absolute", bottom: "30px", right: "30px" }} className="ui animated button blue" onClick={toggleDrawer} tabIndex="0">
-					<div className="visible content">Add Timeblock</div>
+				<button style={{ position: "fixed", bottom: "30px", right: "30px" }} className="ui animated button green" onClick={toggleDrawer} tabIndex="0">
+					<div className="visible content">Add Time Block</div>
 					<div className="hidden content">
 						<i className="add icon"></i>
 					</div>
