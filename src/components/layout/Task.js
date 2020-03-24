@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import actions from '../../actions/index.js'
+import { Row, Col } from "antd"
 
 const Task = (props) => {
-	const { id, timeblock_id, title, description, status, setData } = props
+	const { id, title, description } = props
 
 	const store = useSelector(state => state.indexReducer);
 	const dispatch = useDispatch();
 
 	const [task, setTask] = useState(props);
+	const [statusColor, setStatusColor] = useState('');
 
 	const handleChange = (e) => {
 		setTask({ ...task, [e.target.name]: e.target.value })
@@ -20,27 +22,32 @@ const Task = (props) => {
 
 	useEffect(() => {
 		dispatch(actions.indexActions.modifyTask(task.timeblock_id, task.id, task))
+		if (task.status === "Completed") return setStatusColor('green')
+		if (task.status === "In Progress") return setStatusColor('yellow')
+		if (task.status === "Not Completed") return setStatusColor('red')
 	}, [handleChange])
 
 	return (
-		<tr>
-			<td>
+		<Row id="Task" align="middle">
+			<Col sm={6} xs={24}>
 				<div className="ui buttons">
-					<select name="status" value={task.status} className="ui floating dropdown button" onChange={handleChange}>
+					<select name="status" value={task.status} className={`ui floating dropdown button ${statusColor}`} onChange={handleChange}>
 						<option value="Completed">Completed</option>
 						<option value="In Progress">In Progress</option>
 						<option value="Not Completed">Not Completed</option>
 					</select>
 				</div>
-				<i style={{ marginLeft: "5px" }} className="trash alternate outline icon" onClick={handleRemove}></i>
-			</td>
-			<td>
+			</Col>
+			<Col sm={6} xs={24}>
 				<h4>{title}</h4>
-			</td>
-			<td>
+			</Col>
+			<Col sm={11} xs={23}>
 				{description}
-			</td>
-		</tr>
+			</Col>
+			<Col sm={1} xs={1}>
+				<i className="trash alternate outline icon" onClick={handleRemove}></i>
+			</Col>
+		</Row>
 	)
 }
 
