@@ -21,7 +21,6 @@ const TaskForm = (props) => {
 		},
 		validationSchema: Yup.object({
 			title: Yup.string().required("Required"),
-			description: Yup.string().required("Required")
 		}),
 		onSubmit: (data, { resetForm }) => {
 			dispatch(actions.indexActions.addTask(id, data))

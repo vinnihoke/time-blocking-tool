@@ -8,7 +8,7 @@ import actions from "../../actions/index.js";
 
 
 const Timeblock = (props) => {
-	const { id, title, start, end, description, tasks } = props
+	const { id, title, start, end, description } = props
 
 	const store = useSelector(state => state.indexReducer);
 	const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const Timeblock = (props) => {
 					<tr>
 						<th colSpan="3">
 							{/* TODO Needs conversion to time */}
-							<h4>{`${dayjs(start).format("HH:mm")} - ${dayjs(end).format("HH:mm")}`}</h4>
+							<h4>{`${dayjs.unix(start).format("h:mm a")} - ${dayjs.unix(end).format("h:mm a")}`}</h4>
 						</th>
 					</tr>
 				</thead>
