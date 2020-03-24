@@ -72,12 +72,14 @@ const Timeblock = (props) => {
 				<h4>Add New Task</h4>
 				<TaskForm {...props} />
 			</Drawer>
-			<button className="ui animated button blue" onClick={toggleDrawer} tabIndex="0">
-				<div className="visible content">Add Task</div>
-				<div className="hidden content">
-					<i className="add icon"></i>
-				</div>
-			</button>
+			<Row justify="end">
+				<button className="ui animated button blue" onClick={toggleDrawer} tabIndex="0">
+					<div className="visible content">Add Task</div>
+					<div className="hidden content">
+						<i className="add icon"></i>
+					</div>
+				</button>
+			</Row>
 		</section>
 	)
 }
