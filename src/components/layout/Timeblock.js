@@ -6,6 +6,7 @@ import TaskForm from '../utils/TaskForm.js'
 import { useDispatch, useSelector } from "react-redux";
 import { Drawer, Row, Col } from "antd"
 import actions from "../../actions/index.js";
+import { useWindowDimensions } from '../../helpers/useWindowDimensions.js'
 
 
 const Timeblock = (props) => {
@@ -15,6 +16,9 @@ const Timeblock = (props) => {
 	const dispatch = useDispatch();
 
 	const [drawer, setDrawer] = useState(false)
+	const { width } = useWindowDimensions()
+
+	console.log(width)
 
 	const toggleDrawer = () => {
 		setDrawer(!drawer)
@@ -62,16 +66,29 @@ const Timeblock = (props) => {
 					}
 				}) : <tr><td><h4>Loading</h4></td></tr>}
 			</div>
-			<Drawer
-				placement="right"
-				closable={true}
-				onClose={toggleDrawer}
-				visible={drawer}
-				width="425px"
-			>
-				<h4>Add New Task</h4>
-				<TaskForm {...props} />
-			</Drawer>
+			{width < 600 ? (
+				<Drawer
+					placement="bottom"
+					closable={true}
+					onClose={toggleDrawer}
+					visible={drawer}
+					height="85vh"
+				>
+					<h4>Add New Task</h4>
+					<TaskForm {...props} />
+				</Drawer>
+			) : (
+					<Drawer
+						placement="right"
+						closable={true}
+						onClose={toggleDrawer}
+						visible={drawer}
+						width="40%"
+					>
+						<h4>Add New Task</h4>
+						<TaskForm {...props} />
+					</Drawer>
+				)}
 			<Row justify="end">
 				<button className="ui animated button blue" onClick={toggleDrawer} tabIndex="0">
 					<div className="visible content">Add Task</div>
