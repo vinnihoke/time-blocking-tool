@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 // Imported UI Library CSS 
 import 'antd/lib/drawer/style/index.css';
 import 'antd/lib/grid/style/index.css'
+import 'antd/lib/badge/style/index.css'
 import "react-datepicker/dist/react-datepicker.css";
 import 'semantic-ui-css/semantic.min.css'
 
