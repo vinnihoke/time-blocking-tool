@@ -30,8 +30,9 @@ const Task = (props) => {
 	return (
 		<Row id="Task" align="middle">
 			<Col sm={6} xs={24}>
+				<div style={{ marginRight: '10px' }} className={`ui empty circular label ${statusColor}`} />
 				<div className="ui buttons">
-					<select name="status" value={task.status} className={`ui floating dropdown button ${statusColor}`} onChange={handleChange}>
+					<select name="status" value={task.status} className={`ui floating dropdown button`} onChange={handleChange}>
 						<option value="Completed">Completed</option>
 						<option value="In Progress">In Progress</option>
 						<option value="Not Completed">Not Completed</option>
