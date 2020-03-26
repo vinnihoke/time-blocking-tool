@@ -1,15 +1,36 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
+  "short_name": "Time Blocking",
+  "name": "Delegate specific windows of time for deep work.",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffe9d2",
+  "theme_color": "#ffe1cf",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/whatsapp/238/stopwatch_23f1.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/whatsapp/238/stopwatch_23f1.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/whatsapp/238/stopwatch_23f1.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/whatsapp/238/stopwatch_23f1.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/whatsapp/238/stopwatch_23f1.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    }
+  ]
 }
