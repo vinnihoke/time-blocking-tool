@@ -11,7 +11,7 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move'
 
 const Sortable = SortableContainer(({ children }) => <div className="task-container">{children}</div>);
-const SortableTask = SortableElement(({ task }) => <Task {...task} />)
+const SortableTask = SortableElement(({ task }) => <Task key={task} {...task} />)
 
 
 const Timeblock = (props) => {
@@ -23,8 +23,6 @@ const Timeblock = (props) => {
 	const [drawer, setDrawer] = useState(false)
 	const { width } = useWindowDimensions()
 
-	console.log(width)
-
 	const toggleDrawer = () => {
 		setDrawer(!drawer)
 	}
@@ -34,14 +32,12 @@ const Timeblock = (props) => {
 	}
 
 	const onSortEnd = ({ oldIndex, newIndex }) => {
-		// console.log(arrayMove(store.tasks, oldIndex, newIndex))
 		dispatch(actions.indexActions.reorderTasks(arrayMove(store.tasks, oldIndex, newIndex)))
 	}
 
 	useEffect(() => {
-		console.log(":38 timeblock.js")
 		dispatch(actions.indexActions.setTasks(id))
-	}, [store.timeblocks, dispatch])
+	}, [store.timeblocks])
 
 
 
@@ -70,10 +66,10 @@ const Timeblock = (props) => {
 					<h4>{`${dayjs.unix(start).format("h:mm a")} - ${dayjs.unix(end).format("h:mm a")}`}</h4>
 				</Col>
 			</Row>
-			<Sortable axis="y" onSortEnd={onSortEnd} onSortStart={(_, event) => event.preventDefault()}>
+			<Sortable axis="y" pressDelay={100} onSortEnd={onSortEnd} onSortStart={(_, event) => event.preventDefault()} style={{ background: "cyan" }}>
 				{store.tasks ? store.tasks.map((task, index) => {
 					if (task.timeblock_id === id) {
-						return <SortableTask index={index} key={index} task={task} />
+						return <SortableTask index={index} key={task.id} task={task} />
 					}
 				}) : <tr><td><h4>Loading</h4></td></tr>}
 			</Sortable>
