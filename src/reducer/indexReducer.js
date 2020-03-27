@@ -21,6 +21,8 @@ const indexReducer = (state = initialState, action) => {
 			return { ...state, tasks: _.uniqBy([...state.tasks, ...action.payload], "id") };
 		case "ADD_TASK":
 			return { ...state, tasks: [...state.tasks, action.payload] };
+		case "REORDER_TASKS":
+			return { ...state, tasks: action.payload };
 		case "REMOVE_TASK":
 			return { ...state, tasks: state.tasks.filter(task => task.id !== action.payload.id) };
 		case "MODIFY_TASK":

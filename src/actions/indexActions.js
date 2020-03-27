@@ -50,6 +50,10 @@ const removeTask = (timeblockid, taskid) => dispatch => {
 		.then(res => dispatch({ type: "REMOVE_TASK", payload: res.data }))
 		.catch(err => console.log(err))
 }
+const reorderTasks = (tasks) => dispatch => {
+	console.log(":54 indexActions", tasks)
+	dispatch({ type: "REORDER_TASKS", payload: tasks })
+}
 
 
 export default {
@@ -61,5 +65,6 @@ export default {
 	addTask,
 	removeTask,
 	modifyTask,
+	reorderTasks,
 	setUser
 }

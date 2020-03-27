@@ -7,6 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Drawer, Row, Col } from "antd"
 import actions from "../../actions/index.js";
 import { useWindowDimensions } from '../../helpers/useWindowDimensions.js'
+import { SortableContainer, SortableElement } from 'react-sortable-hoc';
+import arrayMove from 'array-move'
+
+const Sortable = SortableContainer(({ children }) => <div className="task-container">{children}</div>);
+const SortableTask = SortableElement(({ task }) => <Task {...task} />)
 
 
 const Timeblock = (props) => {
@@ -33,6 +38,10 @@ const Timeblock = (props) => {
 		dispatch(actions.indexActions.setTasks(id))
 	}, [store.timeblocks, dispatch])
 
+	const onSortEnd = ({ oldIndex, newIndex }) => {
+		// console.log(arrayMove(store.tasks, oldIndex, newIndex))
+		dispatch(actions.indexActions.reorderTasks(arrayMove(store.tasks, oldIndex, newIndex)))
+	}
 
 	return (
 		<section id="Timeblock">
@@ -59,13 +68,13 @@ const Timeblock = (props) => {
 					<h4>{`${dayjs.unix(start).format("h:mm a")} - ${dayjs.unix(end).format("h:mm a")}`}</h4>
 				</Col>
 			</Row>
-			<div className="task-container">
+			<Sortable axis="y" onSortEnd={onSortEnd} onSortStart={(_, event) => event.preventDefault()}>
 				{store.tasks ? store.tasks.map((task, index) => {
 					if (task.timeblock_id === id) {
-						return <Task key={index} {...task} />
+						return <SortableTask index={index} key={index} task={task} collection="store.tasks" />
 					}
 				}) : <tr><td><h4>Loading</h4></td></tr>}
-			</div>
+			</Sortable>
 			{width < 600 ? (
 				<Drawer
 					placement="bottom"
