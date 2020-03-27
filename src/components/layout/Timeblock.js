@@ -33,15 +33,17 @@ const Timeblock = (props) => {
 		dispatch(actions.indexActions.removeTimeblock(store.user.id, id))
 	}
 
-
-	useEffect(() => {
-		dispatch(actions.indexActions.setTasks(id))
-	}, [store.timeblocks, dispatch])
-
 	const onSortEnd = ({ oldIndex, newIndex }) => {
 		// console.log(arrayMove(store.tasks, oldIndex, newIndex))
 		dispatch(actions.indexActions.reorderTasks(arrayMove(store.tasks, oldIndex, newIndex)))
 	}
+
+	useEffect(() => {
+		console.log(":38 timeblock.js")
+		dispatch(actions.indexActions.setTasks(id))
+	}, [store.timeblocks, dispatch])
+
+
 
 	return (
 		<section id="Timeblock">
@@ -71,7 +73,7 @@ const Timeblock = (props) => {
 			<Sortable axis="y" onSortEnd={onSortEnd} onSortStart={(_, event) => event.preventDefault()}>
 				{store.tasks ? store.tasks.map((task, index) => {
 					if (task.timeblock_id === id) {
-						return <SortableTask index={index} key={index} task={task} collection="store.tasks" />
+						return <SortableTask index={index} key={index} task={task} />
 					}
 				}) : <tr><td><h4>Loading</h4></td></tr>}
 			</Sortable>

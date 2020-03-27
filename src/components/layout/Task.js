@@ -46,7 +46,7 @@ const Task = (props) => {
 				{description}
 			</Col>
 			<Col sm={1} xs={1}>
-				<i className="trash alternate outline icon" onClick={handleRemove}></i>
+				<i className="trash alternate outline icon" onClick={handleRemove} style={{ position: 'relative', zIndex: "20"}}></i>
 			</Col>
 		</Row>
 	)
