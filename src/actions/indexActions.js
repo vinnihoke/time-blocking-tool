@@ -4,6 +4,9 @@ import axiosWithAuth from '../helpers/axiosWithAuth.js'
 const setUser = (user) => dispatch => {
 	return dispatch({ type: "SET_USER", payload: user })
 }
+const toggleEdit = (value) => dispatch => {
+	return dispatch({ type: "TOGGLE_EDIT", payload: value })
+}
 
 
 const setTimeblocks = (userid) => dispatch => {
@@ -17,8 +20,11 @@ const addTimeblock = (userid, timeblock) => dispatch => {
 		// .then(res => console.log(res.data))
 		.catch(err => console.log(err))
 }
-const modifyTimeblock = (userid, changes) => dispatch => {
-	axiosWithAuth().post(`/timeblocks/${userid}`, changes)
+const editTimeblock = (current) => dispatch => {
+	dispatch({ type: "EDIT_TIMEBLOCK", payload: current })
+}
+const modifyTimeblock = (userid, timeblockid, changes) => dispatch => {
+	axiosWithAuth().put(`/timeblocks/${userid}/${timeblockid}`, changes)
 		.then(res => dispatch({ type: "MODIFY_TIMEBLOCK", payload: res.data }))
 		.catch(err => console.log(err))
 }
@@ -59,6 +65,8 @@ const reorderTasks = (tasks) => dispatch => {
 export default {
 	setTimeblocks,
 	addTimeblock,
+	toggleEdit,
+	editTimeblock,
 	modifyTimeblock,
 	removeTimeblock,
 	setTasks,
