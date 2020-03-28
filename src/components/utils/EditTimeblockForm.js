@@ -10,7 +10,7 @@ import advancedFormat from 'dayjs/plugin/advancedFormat'
 
 dayjs.extend(advancedFormat)
 
-const TimeblockForm = () => {
+const EditTimeblockForm = () => {
 
 	const store = useSelector(state => state.indexReducer);
 	const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const TimeblockForm = () => {
 	});
 
 	const formik = useFormik({
-		initialValues: { ...store.timeblockForm },
+		initialValues: store.timeblockForm,
 		validationSchema: Yup.object({
 			title: Yup.string().required("Required"),
 			description: Yup.string(),
@@ -28,13 +28,9 @@ const TimeblockForm = () => {
 		onSubmit: (data, { resetForm }) => {
 			data.start = dayjs(window.start).unix();
 			data.end = dayjs(window.end).unix();
-			dispatch(actions.indexActions.addTimeblock(store.user.id, data))
-			console.log("This is the data from formik", data)
-			resetForm()
+			dispatch(actions.indexActions.modifyTimeblock(store.user.id, data.id, data))
 		}
 	})
-
-	console.log("This is the window", window)
 
 	return (
 		<Form onSubmit={formik.handleSubmit}>
@@ -77,9 +73,9 @@ const TimeblockForm = () => {
 					dateFormat="hh:mm aa"
 				/>
 			</Form.Field>
-			<Button type='submit'>Add New Timeblock</Button>
+			<Button type='submit'>Edit Timeblock</Button>
 		</Form>
 	)
 }
 
-export default TimeblockForm
+export default EditTimeblockForm
