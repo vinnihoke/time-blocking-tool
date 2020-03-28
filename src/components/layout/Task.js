@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import actions from '../../actions/index.js'
 import { Row, Col } from "antd"
 
-const Task = (props) => {
+const Task = React.memo((props) => {
 	const { id, title, description } = props
 
 	const store = useSelector(state => state.indexReducer);
@@ -25,7 +25,7 @@ const Task = (props) => {
 		if (task.status === "Completed") return setStatusColor('green')
 		if (task.status === "In Progress") return setStatusColor('yellow')
 		if (task.status === "Not Completed") return setStatusColor('red')
-	}, [handleChange])
+	}, [handleChange, handleRemove])
 
 	return (
 		<Row id="Task" align="middle">
@@ -50,6 +50,6 @@ const Task = (props) => {
 			</Col>
 		</Row>
 	)
-}
+})
 
 export default Task
