@@ -25,12 +25,17 @@ const Timeblock = (props) => {
 	const { width } = useWindowDimensions()
 
 	const toggleDrawer = () => {
+		debugger;
 		setDrawer(!drawer)
-		if (store.editing === true) dispatch(actions.indexActions.toggleEdit(false))
+		if (store.editing === true) {
+			dispatch(actions.indexActions.toggleEdit(false))
+		}
+		dispatch(actions.indexActions.resetTimeblockForm())
 	}
 
 	const toggleEdit = () => {
 		dispatch(actions.indexActions.toggleEdit(true))
+		dispatch(actions.indexActions.editTimeblock(props))
 		setDrawer(!drawer)
 
 	}
@@ -39,11 +44,6 @@ const Timeblock = (props) => {
 		dispatch(actions.indexActions.removeTimeblock(store.user.id, id))
 	}
 
-	const handleEdit = () => {
-		dispatch(actions.indexActions.toggleEdit())
-		dispatch(actions.indexActions.editTimeblock(props))
-		toggleDrawer()
-	}
 
 	const onSortEnd = ({ oldIndex, newIndex }) => {
 		dispatch(actions.indexActions.reorderTasks(arrayMove(store.tasks, oldIndex, newIndex)))
