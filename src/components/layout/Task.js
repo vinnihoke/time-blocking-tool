@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import actions from '../../actions/index.js'
 import { Row, Col } from "antd"
@@ -14,6 +14,10 @@ const Task = React.memo((props) => {
 
 	const handleChange = (e) => {
 		setTask({ ...task, [e.target.name]: e.target.value })
+		// Promise.all([set]).then(
+		// 	dispatch(actions.indexActions.modifyTask(task.timeblock_id, task.id, task))
+		// )
+
 	}
 
 	const handleRemove = () => {
@@ -22,6 +26,9 @@ const Task = React.memo((props) => {
 
 	useEffect(() => {
 		dispatch(actions.indexActions.modifyTask(task.timeblock_id, task.id, task))
+	}, [task])
+
+	useLayoutEffect(() => {
 		if (task.status === "Completed") return setStatusColor('green')
 		if (task.status === "In Progress") return setStatusColor('yellow')
 		if (task.status === "Not Completed") return setStatusColor('red')

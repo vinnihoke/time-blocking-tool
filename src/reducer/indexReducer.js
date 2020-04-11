@@ -34,6 +34,14 @@ const indexReducer = (state = initialState, action) => {
 					description: action.payload.description
 				}
 			};
+		case "RESET_TIMEBLOCK_FORM":
+			return {
+				...state, timeblockForm: {
+					id: "",
+					title: "",
+					description: ""
+				}
+			};
 		case "MODIFY_TIMEBLOCK":
 			return { ...state, timeblocks: state.timeblocks.map(timeblock => timeblock.id === action.payload.id ? action.payload : timeblock) }
 		case "REMOVE_TIMEBLOCK":
@@ -56,10 +64,7 @@ const indexReducer = (state = initialState, action) => {
 		case "REMOVE_TASK":
 			return { ...state, tasks: state.tasks.filter(task => task.id !== action.payload.id) };
 		case "MODIFY_TASK":
-			const updated = { ...state, tasks: state.tasks.splice(state.tasks.findIndex(({ id }) => id === action.payload.id), 1, action.payload) }
-			return state
-		// TODO This is causing an infinite loop... Probably because the toggle for the completed. 👇
-		// return { ...state, tasks: state.tasks.map(task => task.id === action.payload.id ? action.payload : task) }
+			return { ...state, tasks: state.tasks.map(task => task.id === action.payload.id ? action.payload : task) }
 		default:
 			return state
 	}

@@ -23,6 +23,9 @@ const addTimeblock = (userid, timeblock) => dispatch => {
 const editTimeblock = (current) => dispatch => {
 	dispatch({ type: "EDIT_TIMEBLOCK", payload: current })
 }
+const resetTimeblockForm = () => dispatch => {
+	dispatch({ type: "RESET_TIMEBLOCK_FORM" })
+}
 const modifyTimeblock = (userid, timeblockid, changes) => dispatch => {
 	axiosWithAuth().put(`/timeblocks/${userid}/${timeblockid}`, changes)
 		.then(res => dispatch({ type: "MODIFY_TIMEBLOCK", payload: res.data }))
@@ -67,6 +70,7 @@ export default {
 	addTimeblock,
 	toggleEdit,
 	editTimeblock,
+	resetTimeblockForm,
 	modifyTimeblock,
 	removeTimeblock,
 	setTasks,
