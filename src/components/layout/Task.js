@@ -1,38 +1,35 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect, memo } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import actions from '../../actions/index.js'
+import useAsyncState from '../../hooks/useAsyncState.js'
 import { Row, Col } from "antd"
 
-const Task = React.memo((props) => {
+const Task = memo((props) => {
 	const { id, title, description } = props
 
 	const store = useSelector(state => state.indexReducer);
 	const dispatch = useDispatch();
 
-	const [task, setTask] = useState(props);
+	const [task, setTask] = useAsyncState(props);
 	const [statusColor, setStatusColor] = useState('');
 
 	const handleChange = (e) => {
-		setTask({ ...task, [e.target.name]: e.target.value })
-		// Promise.all([set]).then(
-		// 	dispatch(actions.indexActions.modifyTask(task.timeblock_id, task.id, task))
-		// )
-
+		setTask({ ...task, [e.target.name]: e.target.value }).then(task => dispatch(actions.indexActions.modifyTask(task.timeblock_id, task.id, task)))
 	}
 
 	const handleRemove = () => {
 		dispatch(actions.indexActions.removeTask(store.user.id, id))
 	}
 
-	useEffect(() => {
-		dispatch(actions.indexActions.modifyTask(task.timeblock_id, task.id, task))
-	}, [task])
-
-	useLayoutEffect(() => {
+	const statusCheck = () => {
 		if (task.status === "Completed") return setStatusColor('green')
 		if (task.status === "In Progress") return setStatusColor('yellow')
 		if (task.status === "Not Completed") return setStatusColor('red')
-	}, [handleChange, handleRemove])
+	}
+
+	useLayoutEffect(() => {
+		statusCheck()
+	}, [task])
 
 	return (
 		<Row id="Task" align="middle">

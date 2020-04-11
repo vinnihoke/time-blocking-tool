@@ -25,7 +25,6 @@ const Timeblock = (props) => {
 	const { width } = useWindowDimensions()
 
 	const toggleDrawer = () => {
-		debugger;
 		setDrawer(!drawer)
 		if (store.editing === true) {
 			dispatch(actions.indexActions.toggleEdit(false))
@@ -85,7 +84,7 @@ const Timeblock = (props) => {
 			<Sortable axis="y" pressDelay={100} onSortEnd={onSortEnd} onSortStart={(_, event) => event.preventDefault()} style={{ background: "cyan" }}>
 				{store.tasks ? store.tasks.map((task, index) => {
 					if (task.timeblock_id === id) {
-						return <SortableTask index={index} key={task.id} task={task} />
+						return <SortableTask index={index} key={task.id * Math.random()} task={task} />
 					}
 				}) : <tr><td><h4>Loading</h4></td></tr>}
 			</Sortable>
