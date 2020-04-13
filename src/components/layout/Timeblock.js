@@ -45,7 +45,8 @@ const Timeblock = (props) => {
 
 
 	const onSortEnd = ({ oldIndex, newIndex }) => {
-		dispatch(actions.indexActions.reorderTasks(arrayMove(store.tasks, oldIndex, newIndex)))
+		let modified = arrayMove(store.tasks, oldIndex, newIndex)
+		dispatch(actions.indexActions.reorderTasks(modified))
 	}
 
 	useEffect(() => {
@@ -81,7 +82,7 @@ const Timeblock = (props) => {
 					<h4>{`${dayjs.unix(start).format("h:mm a")} - ${dayjs.unix(end).format("h:mm a")}`}</h4>
 				</Col>
 			</Row>
-			<Sortable axis="y" pressDelay={100} onSortEnd={onSortEnd} onSortStart={(_, event) => event.preventDefault()} style={{ background: "cyan" }}>
+			<Sortable axis="y" pressDelay={200} onSortEnd={onSortEnd} onSortStart={(_, event) => event.preventDefault()}>
 				{store.tasks ? store.tasks.map((task, index) => {
 					if (task.timeblock_id === id) {
 						return <SortableTask index={index} key={task.id * Math.random()} task={task} />
