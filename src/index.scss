@@ -20,8 +20,8 @@
 		width: calc(99%/2);
 		display: flex;
 		flex-flow: column;
-		align-items: center;
-		justify-content: center;
+		align-items: flex-start;
+		justify-content: flex-start;
 
 		.landing-card {
 			padding: 25px;

@@ -5,8 +5,22 @@ const Landing = () => {
 	return (
 		<section id="Landing" className="ui container">
 			<aside className="landing-column">
-				<h1>Welcome to Time Blocking</h1>
-				<p>Delegate specific windows of time for deep work.</p>
+				<div>
+					<h1>Welcome to Time Blocking</h1>
+					<p>Dedicate specific windows of time for deep work.</p>
+				</div>
+				{/* <div style={{ paddingTop: 50 }}>
+					<h3>How does it work?</h3>
+					<h5>Step 1</h5>
+					<p>Add a time block and set a window of time.</p>
+					<h5>Step 2</h5>
+					<p>Add a few tasks.</p>
+					<h5>Step 3</h5>
+					<p>Complete tasks during time block.</p>
+					<h5>Step 4</h5>
+					<p>Didn't finish all tasks? Don't sweat it! Pick them up the next time that time block rolls around.</p>
+
+				</div> */}
 			</aside>
 			<aside className="landing-column">
 				<div className="landing-card">
@@ -20,7 +34,7 @@ const Landing = () => {
 					</a>
 				</div>
 			</aside>
-		</section>
+		</section >
 	)
 }
 
