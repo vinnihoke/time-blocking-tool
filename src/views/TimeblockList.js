@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import actions from "../actions/index";
 import { Drawer } from 'antd'
-import { useWindowDimensions } from '../helpers/useWindowDimensions.js'
+import useWindowDimensions from '../hooks/useWindowDimensions.js'
 
 
 const TimeblockList = () => {

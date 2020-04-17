@@ -6,7 +6,7 @@ import TaskForm from '../utils/TaskForm.js'
 import { useDispatch, useSelector } from "react-redux";
 import { Drawer, Row, Col } from "antd"
 import actions from "../../actions/index.js";
-import { useWindowDimensions } from '../../helpers/useWindowDimensions.js'
+import useWindowDimensions from '../../hooks/useWindowDimensions.js'
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move'
 import EditTimeblockForm from '../utils/EditTimeblockForm.js';
