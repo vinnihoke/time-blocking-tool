@@ -16,41 +16,21 @@
 	align-items: center;
 	justify-content: center;
 
-	.landing-column {
-		width: calc(99%/2);
+	.landing-card {
+		padding: 25px;
+		width: 350px;
+		height: 400px;
+		border-radius: 10px;
+		box-shadow: 1px 1px 10px  rgb(231, 231, 231);
 		display: flex;
 		flex-flow: column;
-		align-items: flex-start;
-		justify-content: flex-start;
-
-		.landing-card {
-			padding: 25px;
-			width: 350px;
-			height: 400px;
-			border-radius: 10px;
-			box-shadow: 1px 1px 10px  rgb(231, 231, 231);
-			display: flex;
-			flex-flow: column;
-			align-items: center;
-			justify-content: center;
-
-			@media (max-width: 1000px){
-				width: 350px;
-				height: 200px;
-				flex-flow: column;
-				align-items: center;
-				justify-content: space-evenly;
-			}
-		}
-
-	}
-	@media (max-width: 1000px){
-		flex-flow: column;
 		align-items: center;
-		justify-content: space-evenly;
+		justify-content: center;
+
+		@media (max-width: 600px){
+			margin-top: 75px;
+		}
 	}
-
-
 }
 
 #Timeblock {
