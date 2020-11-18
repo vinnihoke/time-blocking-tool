@@ -27,12 +27,9 @@ export default function TimeblockForm() {
 			data.start = dayjs(window.start).unix();
 			data.end = dayjs(window.end).unix();
 			dispatch(actions.indexActions.addTimeblock(store.user.id, data));
-			console.log('This is the data from formik', data);
 			resetForm();
 		},
 	});
-
-	console.log('This is the window', window);
 
 	return (
 		<form onSubmit={formik.handleSubmit}>

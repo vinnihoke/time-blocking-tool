@@ -1,0 +1,13 @@
+@import "../index.scss";
+
+.root {
+	@include container();
+}
+
+.signIn {
+	@include button-primary();
+	display: inline-grid;
+	grid-template-columns: 175px 20px;
+	grid-gap: 10px;
+	align-items: center;
+}

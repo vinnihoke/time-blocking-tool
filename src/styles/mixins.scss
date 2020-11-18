@@ -1,0 +1,37 @@
+@import "./variables.scss";
+
+@mixin flex($flex: row wrap, $justify: center, $align: center) {
+	display: flex;
+	flex-flow: $flex;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+@mixin shadow() {
+	box-shadow: 1px 2px 10px lightgray;
+}
+
+@mixin container($top: $space-6, $bottom: $space-6, $pad: $space-4) {
+	max-width: $desktop;
+	margin: $top auto $bottom auto;
+	padding: $pad $space-4;
+}
+
+@mixin _button() {
+	border-radius: $br;
+	border: $border;
+	padding: $space-2 $space-3;
+	text-decoration: none;
+
+	&:visited {
+		color: inherit;
+	}
+
+	&:hover {
+		filter: invert(50%);
+	}
+}
+
+@mixin button-primary() {
+	@include _button;
+}

@@ -27,6 +27,7 @@ export default function App() {
 					<Navbar />
 					<Landing />
 					<Auth />
+					<Dashboard />
 				</main>
 			</Provider>
 		</>
