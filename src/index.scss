@@ -21,13 +21,13 @@
 		width: 350px;
 		height: 400px;
 		border-radius: 10px;
-		box-shadow: 1px 1px 10px  rgb(231, 231, 231);
+		box-shadow: 1px 1px 10px rgb(231, 231, 231);
 		display: flex;
 		flex-flow: column;
 		align-items: center;
 		justify-content: center;
 
-		@media (max-width: 600px){
+		@media (max-width: 600px) {
 			margin-top: 75px;
 		}
 	}
@@ -45,11 +45,10 @@
 
 #Task {
 	padding: 15px;
-	
-	&:nth-of-type(even) {
-		background: whitesmoke
-	}
 
+	&:nth-of-type(even) {
+		background: whitesmoke;
+	}
 }
 
 .pushable {
@@ -70,5 +69,3 @@
 	display: none;
 	transition: 1s;
 }
-
-

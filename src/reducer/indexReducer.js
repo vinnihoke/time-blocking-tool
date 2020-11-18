@@ -1,5 +1,4 @@
-import _ from 'lodash'
-import actions from '../actions/index.js'
+import _ from 'lodash';
 
 const initialState = {
 	user: {},
@@ -13,61 +12,98 @@ const initialState = {
 		title: '',
 		description: '',
 	},
-	editing: false
-}
+	editing: false,
+};
 
 const indexReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case "SET_USER":
+		case 'SET_USER':
 			return { ...state, user: action.payload };
-		case "TOGGLE_EDIT":
+		case 'TOGGLE_EDIT':
 			return { ...state, editing: action.payload };
-		case "SET_TIMEBLOCKS":
-			return { ...state, timeblocks: _.uniqBy([...state.timeblocks, ...action.payload], "id") };
-		case "ADD_TIMEBLOCK":
-			return { ...state, timeblocks: [...state.timeblocks, action.payload] };
-		case "EDIT_TIMEBLOCK":
+		case 'SET_TIMEBLOCKS':
 			return {
-				...state, timeblockForm: {
+				...state,
+				timeblocks: _.uniqBy(
+					[...state.timeblocks, ...action.payload],
+					'id'
+				),
+			};
+		case 'ADD_TIMEBLOCK':
+			return {
+				...state,
+				timeblocks: [...state.timeblocks, action.payload],
+			};
+		case 'EDIT_TIMEBLOCK':
+			return {
+				...state,
+				timeblockForm: {
 					id: action.payload.id,
 					title: action.payload.title,
-					description: action.payload.description
-				}
+					description: action.payload.description,
+				},
 			};
-		case "RESET_TIMEBLOCK_FORM":
+		case 'RESET_TIMEBLOCK_FORM':
 			return {
-				...state, timeblockForm: {
-					id: "",
-					title: "",
-					description: ""
-				}
+				...state,
+				timeblockForm: {
+					id: '',
+					title: '',
+					description: '',
+				},
 			};
-		case "MODIFY_TIMEBLOCK":
-			return { ...state, timeblocks: state.timeblocks.map(timeblock => timeblock.id === action.payload.id ? action.payload : timeblock) }
-		case "REMOVE_TIMEBLOCK":
-			return { ...state, timeblocks: state.timeblocks.filter(timeblock => timeblock.id !== action.payload.id) };
+		case 'MODIFY_TIMEBLOCK':
+			return {
+				...state,
+				timeblocks: state.timeblocks.map((timeblock) =>
+					timeblock.id === action.payload.id
+						? action.payload
+						: timeblock
+				),
+			};
+		case 'REMOVE_TIMEBLOCK':
+			return {
+				...state,
+				timeblocks: state.timeblocks.filter(
+					(timeblock) => timeblock.id !== action.payload.id
+				),
+			};
 
-		case "SET_TASKS":
-			return { ...state, tasks: _.uniqBy([...state.tasks, ...action.payload], "id") };
-		case "ADD_TASK":
+		case 'SET_TASKS':
+			return {
+				...state,
+				tasks: _.uniqBy([...state.tasks, ...action.payload], 'id'),
+			};
+		case 'ADD_TASK':
 			return { ...state, tasks: [...state.tasks, action.payload] };
-		case "EDIT_TASK":
+		case 'EDIT_TASK':
 			return {
-				...state, taskForm: {
+				...state,
+				taskForm: {
 					id: action.payload.id,
 					title: action.payload.title,
-					description: action.payload.description
-				}
+					description: action.payload.description,
+				},
 			};
-		case "REORDER_TASKS":
+		case 'REORDER_TASKS':
 			return { ...state, tasks: action.payload };
-		case "REMOVE_TASK":
-			return { ...state, tasks: state.tasks.filter(task => task.id !== action.payload.id) };
-		case "MODIFY_TASK":
-			return { ...state, tasks: state.tasks.map(task => task.id === action.payload.id ? action.payload : task) }
+		case 'REMOVE_TASK':
+			return {
+				...state,
+				tasks: state.tasks.filter(
+					(task) => task.id !== action.payload.id
+				),
+			};
+		case 'MODIFY_TASK':
+			return {
+				...state,
+				tasks: state.tasks.map((task) =>
+					task.id === action.payload.id ? action.payload : task
+				),
+			};
 		default:
-			return state
+			return state;
 	}
-}
+};
 
-export default indexReducer
+export default indexReducer;

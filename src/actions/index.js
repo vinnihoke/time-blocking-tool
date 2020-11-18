@@ -1,7 +1,7 @@
-import indexActions from "./indexActions.js"
+import indexActions from './indexActions.js';
 
 const actions = {
-	indexActions
-}
+	indexActions,
+};
 
-export default actions
+export default actions;
