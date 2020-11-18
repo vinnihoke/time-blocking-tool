@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import Timeblock from '../components/layout/Timeblock.js';
 import TimeblockForm from '../components/forms/TimeblockForm.js';
 import actions from '../redux/actions/index';
@@ -9,7 +8,8 @@ import useWindowDimensions from '../hooks/useWindowDimensions.js';
 export default function Dashboard() {
 	const store = useSelector((state) => state.indexReducer);
 	const dispatch = useDispatch();
-	const { userid } = useParams();
+	// Need to grab the userID somehow below
+	// const { userid } = useParams();
 	const { width } = useWindowDimensions();
 
 	const [drawer, setDrawer] = useState(false);
@@ -18,9 +18,9 @@ export default function Dashboard() {
 		setDrawer(!drawer);
 	};
 
-	useEffect(() => {
-		dispatch(actions.indexActions.setTimeblocks(userid));
-	}, [dispatch]);
+	// useEffect(() => {
+	// 	dispatch(actions.indexActions.setTimeblocks(userid));
+	// }, [dispatch]);
 
 	return (
 		<section>

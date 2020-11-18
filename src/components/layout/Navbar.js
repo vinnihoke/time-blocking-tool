@@ -1,13 +1,11 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 
 export default function Navbar() {
-	const history = useHistory();
-
 	const handleLogout = () => {
 		window.localStorage.removeItem('token');
 		window.localStorage.removeItem('state');
-		history.push('/');
+		// Route back to the home below
+		// history.push('/');
 	};
 
 	return (

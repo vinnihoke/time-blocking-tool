@@ -16,7 +16,10 @@ const loadLocal = () => {
 
 const persistedState = loadLocal();
 
-const configRedux = () =>
-	createStore(rootReducer, persistedState, applyMiddleware(thunk, logger));
-
-export default configRedux;
+export default function configRedux() {
+	return createStore(
+		rootReducer,
+		persistedState,
+		applyMiddleware(thunk, logger)
+	);
+}

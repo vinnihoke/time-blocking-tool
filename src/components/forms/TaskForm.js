@@ -1,14 +1,11 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import actions from '../../redux/actions/index.js';
 
 export default function TaskForm(props) {
-	const { userid } = useParams();
-	const { id, setData } = props;
-	const store = useSelector((state) => state.indexReducer);
+	const { id } = props;
 	const dispatch = useDispatch();
 
 	const formik = useFormik({
