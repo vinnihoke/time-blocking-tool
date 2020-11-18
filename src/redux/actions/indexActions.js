@@ -1,4 +1,4 @@
-import axiosWithAuth from '../helpers/axiosWithAuth.js';
+import axiosWithAuth from '../../helpers/axiosWithAuth.js';
 
 // Action Creators
 const setUser = (user) => (dispatch) =>
