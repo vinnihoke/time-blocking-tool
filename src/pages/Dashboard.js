@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Drawer } from 'antd';
 import Timeblock from '../components/layout/Timeblock.js';
-import TimeblockForm from '../components/utils/TimeblockForm.js';
+import TimeblockForm from '../components/forms/TimeblockForm.js';
 import actions from '../actions/index';
 import useWindowDimensions from '../hooks/useWindowDimensions.js';
 
-const TimeblockList = () => {
+export default function Dashboard() {
 	const store = useSelector((state) => state.indexReducer);
 	const dispatch = useDispatch();
 	const { userid } = useParams();
@@ -98,6 +98,4 @@ const TimeblockList = () => {
 			</section>
 		</section>
 	);
-};
-
-export default TimeblockList;
+}

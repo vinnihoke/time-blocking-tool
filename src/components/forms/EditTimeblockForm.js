@@ -10,7 +10,7 @@ import actions from '../../actions/index.js';
 
 dayjs.extend(advancedFormat);
 
-const EditTimeblockForm = () => {
+export default function EditTimeblockForm() {
 	const store = useSelector((state) => state.indexReducer);
 	const dispatch = useDispatch();
 	const [window, setWindow] = useState({
@@ -85,6 +85,4 @@ const EditTimeblockForm = () => {
 			<Button type="submit">Edit Timeblock</Button>
 		</Form>
 	);
-};
-
-export default EditTimeblockForm;
+}

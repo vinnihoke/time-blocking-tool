@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useLayoutEffect, memo } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'antd';
 import actions from '../../actions/index.js';
 import useAsyncState from '../../hooks/useAsyncState.js';
 
-const Task = memo((props) => {
+export default function Task(props) {
 	const { id, title, description } = props;
 
 	const store = useSelector((state) => state.indexReducer);
@@ -73,6 +73,4 @@ const Task = memo((props) => {
 			</Col>
 		</Row>
 	);
-});
-
-export default Task;
+}

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import axiosWithAuth from '../helpers/axiosWithAuth.js';
 import actions from '../actions/index.js';
 
-const Auth = () => {
+export default function Auth() {
 	const history = useHistory();
 	const { token } = useParams();
 	const dispatch = useDispatch();
@@ -37,6 +37,4 @@ const Auth = () => {
 			<div className="ui active centered inline loader" />
 		</div>
 	);
-};
-
-export default Auth;
+}

@@ -6,19 +6,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form } from 'semantic-ui-react';
 import actions from '../../actions/index.js';
 
-const EditTaskForm = (props) => {
+export default function TaskForm(props) {
 	const { userid } = useParams();
 	const { id, setData } = props;
 	const store = useSelector((state) => state.indexReducer);
 	const dispatch = useDispatch();
 
 	const formik = useFormik({
-		initialValues: store.taskForm,
+		initialValues: {
+			title: '',
+			description: '',
+			status: 'Not Completed',
+		},
 		validationSchema: Yup.object({
 			title: Yup.string().required('Required'),
 		}),
 		onSubmit: (data, { resetForm }) => {
-			dispatch(actions.indexActions.modifyTask(id, data.id, data));
+			dispatch(actions.indexActions.addTask(id, data));
+			resetForm();
 		},
 	});
 
@@ -49,6 +54,4 @@ const EditTaskForm = (props) => {
 			<Button type="submit">Add Task</Button>
 		</Form>
 	);
-};
-
-export default EditTaskForm;
+}

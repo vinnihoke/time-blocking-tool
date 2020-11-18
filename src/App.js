@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import TimeblockList from './views/TimeblockList.js';
-import Auth from './views/Auth.js';
-import Landing from './views/Landing.js';
+import Dashboard from './pages/Dashboard.js';
+import Auth from './pages/Auth.js';
+import Landing from './pages/Landing.js';
 import PrivateRoute from './helpers/PrivateRoute.js';
 import configRedux from './configRedux.js';
 import Navbar from './components/layout/Navbar.js';
@@ -21,7 +21,7 @@ const store = configRedux();
 
 store.subscribe(() => saveLocal(store.getState()));
 
-function App() {
+export default function App() {
 	return (
 		<Router>
 			<Provider store={store}>
@@ -34,12 +34,9 @@ function App() {
 						<Route exact path="/auth/:token">
 							<Auth />
 						</Route>
-						{/* <PrivateRoute exact path="/dashboard/:userid">
-                <TimeblockList />
-                </PrivateRoute> */}
 						<PrivateRoute
 							path="/dashboard/:userid"
-							component={TimeblockList}
+							component={Dashboard}
 						/>
 					</Switch>
 				</main>
@@ -47,5 +44,3 @@ function App() {
 		</Router>
 	);
 }
-
-export default App;

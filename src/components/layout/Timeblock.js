@@ -7,9 +7,9 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import actions from '../../actions/index.js';
 import useWindowDimensions from '../../hooks/useWindowDimensions.js';
-import TaskForm from '../utils/TaskForm.js';
+import TaskForm from '../forms/TaskForm.js';
 import Task from './Task.js';
-import EditTimeblockForm from '../utils/EditTimeblockForm.js';
+import EditTimeblockForm from '../forms/EditTimeblockForm.js';
 
 const Sortable = SortableContainer(({ children }) => (
 	<div className="task-container">{children}</div>
@@ -18,7 +18,7 @@ const SortableTask = SortableElement(({ task }) => (
 	<Task key={task} {...task} />
 ));
 
-const Timeblock = (props) => {
+export default function Timeblock(props) {
 	const { id, title, start, end, description } = props;
 
 	const store = useSelector((state) => state.indexReducer);
@@ -157,6 +157,7 @@ const Timeblock = (props) => {
 			)}
 			<Row justify="end">
 				<button
+					type="button"
 					className="ui animated button blue"
 					onClick={toggleDrawer}
 					tabIndex="0"
@@ -169,6 +170,4 @@ const Timeblock = (props) => {
 			</Row>
 		</section>
 	);
-};
-
-export default Timeblock;
+}

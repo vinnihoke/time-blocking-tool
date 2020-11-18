@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Row, Col } from 'antd';
 
-const Navbar = () => {
+export default function Navbar() {
 	const history = useHistory();
 
 	const handleLogout = () => {
@@ -40,6 +40,4 @@ const Navbar = () => {
 			{/* </div> */}
 		</section>
 	);
-};
-
-export default Navbar;
+}
