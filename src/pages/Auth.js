@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axiosWithAuth from '../helpers/axiosWithAuth.js';
-import actions from '../actions/index.js';
+import actions from '../redux/actions/index.js';
 
 export default function Auth() {
 	const history = useHistory();

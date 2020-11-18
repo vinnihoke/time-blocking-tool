@@ -3,8 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Form } from 'semantic-ui-react';
-import actions from '../../actions/index.js';
+import actions from '../../redux/actions/index.js';
 
 export default function TaskForm(props) {
 	const { userid } = useParams();
@@ -28,18 +27,18 @@ export default function TaskForm(props) {
 	});
 
 	return (
-		<Form
+		<form
 			style={{ margin: '30px 0px', padding: '10px' }}
 			onSubmit={formik.handleSubmit}
 		>
-			<Form.Field>
+			<fieldset>
 				<label htmlFor="title">Title</label>
 				<input name="title" {...formik.getFieldProps('title')} />
 				{formik.touched.title && formik.errors.title ? (
 					<div className="has-text-danger">{formik.errors.title}</div>
 				) : null}
-			</Form.Field>
-			<Form.Field>
+			</fieldset>
+			<fieldset>
 				<label htmlFor="description">Description</label>
 				<input
 					name="description"
@@ -50,8 +49,8 @@ export default function TaskForm(props) {
 						{formik.errors.description}
 					</div>
 				) : null}
-			</Form.Field>
-			<Button type="submit">Add Task</Button>
-		</Form>
+			</fieldset>
+			<button type="submit">Add Task</button>
+		</form>
 	);
 }

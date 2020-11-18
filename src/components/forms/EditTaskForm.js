@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form } from 'semantic-ui-react';
-import actions from '../../actions/index.js';
+import actions from '../../redux/actions/index.js';
 
 export default function EditTaskForm(props) {
 	const { userid } = useParams();

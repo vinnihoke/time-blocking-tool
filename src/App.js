@@ -5,7 +5,7 @@ import Dashboard from './pages/Dashboard.js';
 import Auth from './pages/Auth.js';
 import Landing from './pages/Landing.js';
 import PrivateRoute from './helpers/PrivateRoute.js';
-import configRedux from './configRedux.js';
+import configRedux from './redux/configRedux.js';
 import Navbar from './components/layout/Navbar.js';
 
 const saveLocal = (state) => {

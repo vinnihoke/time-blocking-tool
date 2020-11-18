@@ -1,7 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col } from 'antd';
-import actions from '../../actions/index.js';
+import actions from '../../redux/actions/index.js';
 import useAsyncState from '../../hooks/useAsyncState.js';
 
 export default function Task(props) {
@@ -40,8 +39,8 @@ export default function Task(props) {
 	}, [task]);
 
 	return (
-		<Row id="Task" align="middle">
-			<Col sm={6} xs={24}>
+		<div id="Task" align="middle">
+			<div sm={6} xs={24}>
 				<div
 					style={{ marginRight: '10px' }}
 					className={`ui empty circular label ${statusColor}`}
@@ -58,19 +57,19 @@ export default function Task(props) {
 						<option value="Not Completed">Not Completed</option>
 					</select>
 				</div>
-			</Col>
-			<Col sm={6} xs={24}>
+			</div>
+			<div sm={6} xs={24}>
 				<h4>{title}</h4>
-			</Col>
-			<Col sm={11} xs={23}>
+			</div>
+			<div sm={11} xs={23}>
 				{description}
-			</Col>
-			<Col sm={1} xs={1}>
+			</div>
+			<div sm={1} xs={1}>
 				<i
 					className="trash alternate outline icon"
 					onClick={handleRemove}
 				/>
-			</Col>
-		</Row>
+			</div>
+		</div>
 	);
 }

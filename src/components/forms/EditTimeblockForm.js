@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Form } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
-import actions from '../../actions/index.js';
+import actions from '../../redux/actions/index.js';
 
 dayjs.extend(advancedFormat);
 
@@ -38,15 +37,15 @@ export default function EditTimeblockForm() {
 	});
 
 	return (
-		<Form onSubmit={formik.handleSubmit}>
-			<Form.Field>
+		<form onSubmit={formik.handleSubmit}>
+			<fieldset>
 				<label htmlFor="title">Title</label>
 				<input name="title" {...formik.getFieldProps('title')} />
 				{formik.touched.title && formik.errors.title ? (
 					<div className="has-text-danger">{formik.errors.title}</div>
 				) : null}
-			</Form.Field>
-			<Form.Field>
+			</fieldset>
+			<fieldset>
 				<label htmlFor="description">Description</label>
 				<input
 					name="description"
@@ -57,8 +56,8 @@ export default function EditTimeblockForm() {
 						{formik.errors.description}
 					</div>
 				) : null}
-			</Form.Field>
-			<Form.Field>
+			</fieldset>
+			<fieldset>
 				<label htmlFor="start">Start Time</label>
 				<DatePicker
 					selected={window.start}
@@ -69,8 +68,8 @@ export default function EditTimeblockForm() {
 					timeCaption="Start"
 					dateFormat="hh:mm aa"
 				/>
-			</Form.Field>
-			<Form.Field>
+			</fieldset>
+			<fieldset>
 				<label htmlFor="start">End Time</label>
 				<DatePicker
 					selected={window.end}
@@ -81,8 +80,8 @@ export default function EditTimeblockForm() {
 					timeCaption="End"
 					dateFormat="hh:mm aa"
 				/>
-			</Form.Field>
-			<Button type="submit">Edit Timeblock</Button>
-		</Form>
+			</fieldset>
+			<button type="submit">Edit Timeblock</button>
+		</form>
 	);
 }

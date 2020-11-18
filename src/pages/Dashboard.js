@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Drawer } from 'antd';
 import Timeblock from '../components/layout/Timeblock.js';
 import TimeblockForm from '../components/forms/TimeblockForm.js';
-import actions from '../actions/index';
+import actions from '../redux/actions/index';
 import useWindowDimensions from '../hooks/useWindowDimensions.js';
 
 export default function Dashboard() {
@@ -40,7 +39,7 @@ export default function Dashboard() {
 				</div>
 
 				{width < 600 ? (
-					<Drawer
+					<div
 						placement="bottom"
 						closable
 						onClose={toggleDrawer}
@@ -59,9 +58,9 @@ export default function Dashboard() {
 							time block.
 						</p>
 						<TimeblockForm />
-					</Drawer>
+					</div>
 				) : (
-					<Drawer
+					<div
 						placement="right"
 						closable
 						onClose={toggleDrawer}
@@ -80,7 +79,7 @@ export default function Dashboard() {
 							time block.
 						</p>
 						<TimeblockForm />
-					</Drawer>
+					</div>
 				)}
 
 				<button

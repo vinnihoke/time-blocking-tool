@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Popup } from 'semantic-ui-react';
 import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
-import { Drawer, Row, Col } from 'antd';
-import { SortableContainer, SortableElement } from 'react-sortable-hoc';
-import arrayMove from 'array-move';
-import actions from '../../actions/index.js';
+import actions from '../../redux/actions/index.js';
 import useWindowDimensions from '../../hooks/useWindowDimensions.js';
 import TaskForm from '../forms/TaskForm.js';
 import Task from './Task.js';
 import EditTimeblockForm from '../forms/EditTimeblockForm.js';
-
-const Sortable = SortableContainer(({ children }) => (
-	<div className="task-container">{children}</div>
-));
-const SortableTask = SortableElement(({ task }) => (
-	<Task key={task} {...task} />
-));
 
 export default function Timeblock(props) {
 	const { id, title, start, end, description } = props;
@@ -46,8 +35,8 @@ export default function Timeblock(props) {
 	};
 
 	const onSortEnd = ({ oldIndex, newIndex }) => {
-		const modified = arrayMove(store.tasks, oldIndex, newIndex);
-		dispatch(actions.indexActions.reorderTasks(modified));
+		// const modified = arrayMove(store.tasks, oldIndex, newIndex);
+		// dispatch(actions.indexActions.reorderTasks(modified));
 	};
 
 	useEffect(() => {
@@ -56,15 +45,15 @@ export default function Timeblock(props) {
 
 	return (
 		<section id="Timeblock">
-			<Row justify="end">
-				<Col span={22}>
-					<Popup content={description} trigger={<h3>{title}</h3>} />
-				</Col>
-				<Col span={1}>
+			<div justify="end">
+				<div span={22}>
+					<div content={description} trigger={<h3>{title}</h3>} />
+				</div>
+				<div span={1}>
 					<i className="ui icon edit" onClick={toggleEdit} />
-				</Col>
-				<Col span={1}>
-					<Popup
+				</div>
+				<div span={1}>
+					<div
 						trigger={
 							<i className="trash alternate outline icon red" />
 						}
@@ -79,16 +68,16 @@ export default function Timeblock(props) {
 						on="click"
 						position="top right"
 					/>
-				</Col>
-			</Row>
-			<Row>
-				<Col>
+				</div>
+			</div>
+			<div>
+				<div>
 					<h4>{`${dayjs.unix(start).format('h:mm a')} - ${dayjs
 						.unix(end)
 						.format('h:mm a')}`}</h4>
-				</Col>
-			</Row>
-			<Sortable
+				</div>
+			</div>
+			<div
 				axis="y"
 				pressDelay={200}
 				onSortEnd={onSortEnd}
@@ -98,7 +87,7 @@ export default function Timeblock(props) {
 					store.tasks.map((task, index) => {
 						if (task.timeblock_id === id) {
 							return (
-								<SortableTask
+								<div
 									index={index}
 									key={task.id * Math.random()}
 									task={task}
@@ -113,9 +102,9 @@ export default function Timeblock(props) {
 						</td>
 					</tr>
 				)}
-			</Sortable>
+			</div>
 			{width < 600 ? (
-				<Drawer
+				<div
 					placement="bottom"
 					closable
 					onClose={toggleDrawer}
@@ -133,9 +122,9 @@ export default function Timeblock(props) {
 							<TaskForm {...props} />
 						</div>
 					)}
-				</Drawer>
+				</div>
 			) : (
-				<Drawer
+				<div
 					placement="right"
 					closable
 					onClose={toggleDrawer}
@@ -153,9 +142,9 @@ export default function Timeblock(props) {
 							<TaskForm {...props} />
 						</div>
 					)}
-				</Drawer>
+				</div>
 			)}
-			<Row justify="end">
+			<div justify="end">
 				<button
 					type="button"
 					className="ui animated button blue"
@@ -167,7 +156,7 @@ export default function Timeblock(props) {
 						<i className="add icon" />
 					</div>
 				</button>
-			</Row>
+			</div>
 		</section>
 	);
 }

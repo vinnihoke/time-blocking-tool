@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Row, Col } from 'antd';
 
 export default function Navbar() {
 	const history = useHistory();
@@ -14,7 +13,7 @@ export default function Navbar() {
 	return (
 		<section id="Navbar">
 			{/* <div className="ui container"> */}
-			<Row
+			<div
 				justify="end"
 				style={{
 					padding: '10px',
@@ -23,20 +22,20 @@ export default function Navbar() {
 					margin: '0 auto',
 				}}
 			>
-				<Col span={23}>
+				<div span={23}>
 					<h2>Time Blocking</h2>
-				</Col>
-				<Col span={1}>
+				</div>
+				<div span={1}>
 					{window.localStorage.getItem('token') ? (
-						<div className="column right floated right aligned">
+						<div className="divumn right floated right aligned">
 							<i
 								className="icon large sign-out"
 								onClick={handleLogout}
 							/>
 						</div>
 					) : null}
-				</Col>
-			</Row>
+				</div>
+			</div>
 			{/* </div> */}
 		</section>
 	);
